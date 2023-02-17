@@ -2,16 +2,16 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  fetch('https://eventsapi.azurewebsites.net/api/events')
-    .then((res) => res.json)
-    .then((data: any) => console.log(data));
-  // const getdata = () => {
-  //   fetch('https://eventsapi.azurewebsites.net/api/events')
-  //     .then((res) => res.json)
-  //     .then((data) => console.log(data));
-  // };
+  const [user, setuser] = useState('');
 
-  return <div>Hello</div>;
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then((res) => res.json())
+    .then((data: any) => {
+      console.log(data);
+      setuser(data[0].name);
+    });
+
+  return <div>User : {user}</div>;
 }
 
 export default App;
